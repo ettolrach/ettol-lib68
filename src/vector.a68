@@ -1,0 +1,33 @@
+module Vector =
+def
+    { Algol doesn't have ways of generic programming, so the consumer of this code needs to replace
+      "int" with whatever type they would like to use. if you need many types, use a union! e.g.
+      union(bool, ref string, []int) }
+    pub mode Element = int;
+
+    pub mode Vec = struct (ref flex []Element row, int len);
+
+    pub proc vec_new = Vec: (heap flex [1:0]Element, 0);
+    pub proc vec_with_capacity = (int size) Vec: (heap flex [1:size]Element, 0);
+
+    pub op +:= = (ref Vec v, Element e) void:
+              if len of v = UPB (row of v)
+              then begin
+                    int new_upb = len of v * 2;
+                    ref flex []Element new_row = heap flex [1:new_upb]Element;
+                    ref flex []Element old_row = row of v;
+                    new_row[1:len of v] := old_row[1:len of v];
+                    new_row[len of v + 1] := e;
+                    row of v := new_row;
+                    len of v +:= 1
+              end
+              else begin
+                    len of v +:= 1;
+                    (row of v)[len of v] := e
+              end
+              fi;
+    
+    { in Algol, modules are executable code, so without putting "skip" here, the compiler is
+      expecting us to provide some code to run. like Python. unlike Python, we can't omit "skip". }
+    skip
+fed

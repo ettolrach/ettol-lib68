@@ -1,0 +1,11 @@
+access Vector
+begin
+      [1:5]int num_row;
+      num_row[1] = 7;
+      if num_row[2] = 0 then puts("is zero'n") else puts("isn't zero'n") fi;
+      Vec nums := vec_with_capacity(3);
+      nums +:= 0;
+      nums +:= 1;
+      nums +:= 2;
+      if (row of nums)[2] = 1 then puts("true'n") else puts("false'n") fi
+end
