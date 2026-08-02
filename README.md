@@ -1,6 +1,9 @@
-# vec68
+# ettol-lib68
 
-A Vector (array-backed list) library for Algol 68.
+Standard types and functions missing from the regular GNU Algol 68 standard library.
+
+These files are only intended to be used with GCC, no other Algol compilers are being used to test
+the code.
 
 # Compiling
 
