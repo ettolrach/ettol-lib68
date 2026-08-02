@@ -1,0 +1,8 @@
+# GCC output
+*.o
+*.a
+*.out
+
+# Emacs temp files
+*.a68~
+*.md~
