@@ -20,7 +20,7 @@ end
 You would compile this by using the GCC compiler like so:
 
 ```
-ga68 -c vector.a68 && ga68 -c main.a68 && ga68 vector.o main.o -o ./main`
+ga68 -c vector.a68 && ga68 -c main.a68 && ga68 vector.o main.o -o ./main
 ```
 
 This will be familiar with users of the GCC compiler, e.g. for C programs. For more help, see [§
