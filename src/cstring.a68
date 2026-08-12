@@ -1,0 +1,34 @@
+{ Extensions to the standard string mode. }
+
+module CString =
+def
+    pub mode Cstr = struct (ref []short short int buffer);
+    proc new_cstr = (ref []short short int buffer) Cstr:
+    begin
+          heap Cstr to_return;
+          buffer of to_return := buffer;
+          to_return
+    end;
+    pub proc cstr_from_ascii = (ref string s) Cstr:
+           begin
+                 ref []short short int buffer = heap [1:UPB s + 1] short short int;
+                 for i to UPB s do
+                    buffer[i] := SHORTEN SHORTEN ABS s[i]
+                 od;
+                 buffer[UPB s + 1] := SHORTEN SHORTEN 0;
+                 new_cstr(buffer)
+           end;
+    pub proc as_ptr = (ref Cstr s) ref short short int:
+		(buffer of s)[1];
+    pub proc to_string = (Cstr s) string:
+		begin
+		      int num_chars = UPB (buffer of s) - 1;
+		      heap [1:n]char to_return;
+		      for i to n do
+			 to_return[i] := REPR LENG LENG (buffer of s)[i]
+		      od;
+		      to_return
+		end;
+    
+    skip
+fed
